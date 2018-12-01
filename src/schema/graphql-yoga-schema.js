@@ -1,14 +1,19 @@
 module.exports = {
-  typeDefs: `type User {
-  id: ID!
-  name: String!
+  typeDefs: `
+  type Book {
+    title: String!
+  }
+  
+  type User {
+    id: ID!
+    name: String!
   }
   
   type Mutation {
-    fake: String
+    createBook(title: String): Book
   }
   
   type Query {
-    fake: String
+    books: [Book]!
   }`
 };
