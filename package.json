@@ -4,9 +4,20 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon -e js -x node src/index.js",
+    "debug": "nodemon -e js -x node --inspect src/index.js",
+    "deploy": "prisma deploy",
+    "playground": "graphql playground",
+    "dev": "npm-run-all --parallel debug playground"
   },
   "keywords": [],
   "author": "Alex Arriaga <alex.arriaga@webtraining.world>",
-  "license": "UNLICENSED"
+  "license": "UNLICENSED",
+  "dependencies": {
+    "graphql": "^14.0.2",
+    "graphql-yoga": "^1.16.7",
+    "nodemon": "^1.18.7",
+    "npm-run-all": "^4.1.5",
+    "prisma-binding": "^2.2.8"
+  }
 }
