@@ -4,8 +4,8 @@ const Mutation = require('./mutation');
 const Query = require('./query');
 const db = require('./database');
 
-const typeDefs = require('./../generated/prisma-client/prisma-schema.js').typeDefs;
-
+// const typeDefs = require('./../generated/prisma-client/prisma-schema.js').typeDefs;
+const typeDefs = require('./schema/graphql-yoga-schema').typeDefs;
 const resolvers = {
   Query,
   Mutation,
