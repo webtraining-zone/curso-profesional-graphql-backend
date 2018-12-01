@@ -1,6 +1,12 @@
 endpoint: https://us1.prisma.sh/alex-arriaga-5d13f1/curso-profesional-graphql-backend/dev
 datamodel: datamodel.prisma
+# secret
 
 generate:
   - generator: javascript-client
     output: ./generated/prisma-client/
+
+hooks:
+    post-deploy:
+    - graphql get-schema --project prisma
+
