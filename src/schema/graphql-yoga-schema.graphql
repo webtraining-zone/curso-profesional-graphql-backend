@@ -1,0 +1,9 @@
+# import * from './../../prisma.graphql'
+
+type Mutation {
+    createBook(title: String): Book
+}
+
+type Query {
+    books: [Book]!
+}
