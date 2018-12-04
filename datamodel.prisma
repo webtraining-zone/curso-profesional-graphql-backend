@@ -16,3 +16,9 @@ type Book {
     createdAt: DateTime!
     updatedAt: DateTime!
 }
+
+type Category {
+    id: ID! @unique
+    title: String!
+    description: String
+}
