@@ -3,10 +3,11 @@ datamodel: datamodel.prisma
 # secret
 
 generate:
-  - generator: javascript-client
-    output: ./generated/prisma-client/
+- generator: javascript-client
+  output: ./generated/prisma-client/
 
 hooks:
-    post-deploy:
-    - graphql get-schema --project prisma
+  post-deploy:
+  - graphql get-schema --project db
+  - graphql prepare
 
