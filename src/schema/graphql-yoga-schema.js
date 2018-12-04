@@ -1,8 +1,10 @@
 // Public facing API (not get confused with the "Prisma" schema)
 module.exports = {
   typeDefs: `
+  scalar DateTime
+  
   type Book {
-    id: ID! @unique
+    id: ID!
     title: String!
     description: String
     image: String
