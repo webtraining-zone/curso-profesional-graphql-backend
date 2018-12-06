@@ -10,7 +10,19 @@ const server = createServer();
 server.start({
   cors: {
     credentials: true,
-    origin: '*',
+    origin: ['http://localhost:8085', 'http://graphql-frontend.webtraining.fun'],
+    // methods: 'OPTIONS,GET,HEAD,PUT,PATCH,POST,DELETE',
+    // allowedHeaders: [
+    //   'Access-Control-Allow-Headers',
+    //   'Access-Control-Allow-Origin',
+    //   'Content-Type',
+    //   'Authorization'],
+    // exposedHeaders: [
+    //   'Access-Control-Allow-Headers',
+    //   'Access-Control-Allow-Origin',
+    //   'Content-Type',
+    //   'Authorization'],
+    // preflightContinue: false,
   },
 }, ({port}) => {
   console.log(`Server started, listening on port ${port} for incoming requests.`);
