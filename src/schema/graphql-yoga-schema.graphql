@@ -6,4 +6,5 @@ type Mutation {
 
 type Query {
     books: [Book]!
+    book(where: BookWhereUniqueInput!): Book
 }
