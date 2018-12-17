@@ -1,7 +1,8 @@
 # import * from './../../prisma.graphql'
 
 type Mutation {
-    createBook(title: String): Book
+    createBook(title: String, description: String, thumbnail: String, image: String): Book
+    deleteBook(id: ID!): Book
 }
 
 type Query {

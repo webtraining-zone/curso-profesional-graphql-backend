@@ -19,10 +19,10 @@ module.exports = {
   }
   
   type Mutation {
-    createBook(title: String): Book
+    createBook(title: String, description: String, thumbnail: String, image: String): Book
   }
   
   type Query {
     books: [Book]!
-  }`
+  }`,
 };
