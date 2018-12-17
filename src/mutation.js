@@ -22,6 +22,16 @@ const Mutation = {
     return book;
   },
 
+  async deleteBook(parent, args, context, info) {
+    const where = {id: args.id};
+
+    // Find the book to be deleted
+
+    const book = await context.db.query.book({where}, `{ id title}`);
+
+    return context.db.mutation.deleteBook({where}, info);
+  },
+
 };
 
 module.exports = Mutation;
