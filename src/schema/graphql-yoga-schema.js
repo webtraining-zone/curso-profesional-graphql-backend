@@ -13,16 +13,15 @@ module.exports = {
     updatedAt: DateTime!
   }
   
-  type User {
-    id: ID!
-    name: String!
-  }
-  
   type Mutation {
     createBook(title: String, description: String, thumbnail: String, image: String): Book
+    deleteBook(id: ID!): Book
+    createUserAccount(name: String!, email: String!, password: String!): User!
   }
   
   type Query {
     books: [Book]!
+    book(where: BookWhereUniqueInput!): Book
+    currentUser: User
   }`,
 };
