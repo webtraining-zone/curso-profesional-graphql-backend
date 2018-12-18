@@ -23,6 +23,7 @@ type Book {
   thumbnail: String
   createdAt: DateTime!
   updatedAt: DateTime!
+  categories(where: CategoryWhereInput, orderBy: CategoryOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Category!]
 }
 
 type BookConnection {
@@ -36,6 +37,7 @@ input BookCreateInput {
   description: String
   image: String
   thumbnail: String
+  categories: CategoryCreateManyInput
 }
 
 type BookEdge {
@@ -93,6 +95,7 @@ input BookUpdateInput {
   description: String
   image: String
   thumbnail: String
+  categories: CategoryUpdateManyInput
 }
 
 input BookUpdateManyMutationInput {
@@ -189,6 +192,9 @@ input BookWhereInput {
   updatedAt_lte: DateTime
   updatedAt_gt: DateTime
   updatedAt_gte: DateTime
+  categories_every: CategoryWhereInput
+  categories_some: CategoryWhereInput
+  categories_none: CategoryWhereInput
   AND: [BookWhereInput!]
   OR: [BookWhereInput!]
   NOT: [BookWhereInput!]
@@ -215,6 +221,11 @@ input CategoryCreateInput {
   description: String
 }
 
+input CategoryCreateManyInput {
+  create: [CategoryCreateInput!]
+  connect: [CategoryWhereUniqueInput!]
+}
+
 type CategoryEdge {
   node: Category!
   cursor: String!
@@ -239,6 +250,54 @@ type CategoryPreviousValues {
   description: String
 }
 
+input CategoryScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  title: String
+  title_not: String
+  title_in: [String!]
+  title_not_in: [String!]
+  title_lt: String
+  title_lte: String
+  title_gt: String
+  title_gte: String
+  title_contains: String
+  title_not_contains: String
+  title_starts_with: String
+  title_not_starts_with: String
+  title_ends_with: String
+  title_not_ends_with: String
+  description: String
+  description_not: String
+  description_in: [String!]
+  description_not_in: [String!]
+  description_lt: String
+  description_lte: String
+  description_gt: String
+  description_gte: String
+  description_contains: String
+  description_not_contains: String
+  description_starts_with: String
+  description_not_starts_with: String
+  description_ends_with: String
+  description_not_ends_with: String
+  AND: [CategoryScalarWhereInput!]
+  OR: [CategoryScalarWhereInput!]
+  NOT: [CategoryScalarWhereInput!]
+}
+
 type CategorySubscriptionPayload {
   mutation: MutationType!
   node: Category
@@ -257,14 +316,51 @@ input CategorySubscriptionWhereInput {
   NOT: [CategorySubscriptionWhereInput!]
 }
 
+input CategoryUpdateDataInput {
+  title: String
+  description: String
+}
+
 input CategoryUpdateInput {
   title: String
   description: String
 }
 
+input CategoryUpdateManyDataInput {
+  title: String
+  description: String
+}
+
+input CategoryUpdateManyInput {
+  create: [CategoryCreateInput!]
+  update: [CategoryUpdateWithWhereUniqueNestedInput!]
+  upsert: [CategoryUpsertWithWhereUniqueNestedInput!]
+  delete: [CategoryWhereUniqueInput!]
+  connect: [CategoryWhereUniqueInput!]
+  disconnect: [CategoryWhereUniqueInput!]
+  deleteMany: [CategoryScalarWhereInput!]
+  updateMany: [CategoryUpdateManyWithWhereNestedInput!]
+}
+
 input CategoryUpdateManyMutationInput {
   title: String
   description: String
+}
+
+input CategoryUpdateManyWithWhereNestedInput {
+  where: CategoryScalarWhereInput!
+  data: CategoryUpdateManyDataInput!
+}
+
+input CategoryUpdateWithWhereUniqueNestedInput {
+  where: CategoryWhereUniqueInput!
+  data: CategoryUpdateDataInput!
+}
+
+input CategoryUpsertWithWhereUniqueNestedInput {
+  where: CategoryWhereUniqueInput!
+  update: CategoryUpdateDataInput!
+  create: CategoryCreateInput!
 }
 
 input CategoryWhereInput {
@@ -386,7 +482,7 @@ type User {
   email: String!
   password: String!
   createdAt: DateTime!
-  modifiedAt: DateTime!
+  modifiedAt: DateTime
 }
 
 type UserConnection {
@@ -399,7 +495,7 @@ input UserCreateInput {
   name: String!
   email: String!
   password: String!
-  modifiedAt: DateTime!
+  modifiedAt: DateTime
 }
 
 type UserEdge {
@@ -430,7 +526,7 @@ type UserPreviousValues {
   email: String!
   password: String!
   createdAt: DateTime!
-  modifiedAt: DateTime!
+  modifiedAt: DateTime
 }
 
 type UserSubscriptionPayload {

@@ -20,6 +20,20 @@ var models = [
 exports.Prisma = prisma_lib_1.makePrismaClientClass({
   typeDefs,
   models,
-  endpoint: `https://us1.prisma.sh/alex-arriaga-5d13f1/curso-profesional-graphql-backend/dev`
+  endpoint: `https://us1.prisma.sh/alex-arriaga-5d13f1/graphql-library/dev`
 });
 exports.prisma = new exports.Prisma();
+var models = [
+  {
+    name: "Book",
+    embedded: false
+  },
+  {
+    name: "Category",
+    embedded: false
+  },
+  {
+    name: "User",
+    embedded: false
+  }
+];
