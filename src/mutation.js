@@ -60,6 +60,36 @@ const Mutation = {
     return user;
   },
 
+  async login(parent, args, context, info) {
+
+    const user = await context.db.query.user({
+      where: {email: args.email},
+    }, info);
+
+    if (!user) {
+      throw new Error('Not user found');
+    }
+
+    // There is user
+    const validUser = await bcrypt.compare(args.password, user.password);
+
+    if (!validUser) {
+      throw new Error('No valid password');
+    }
+
+
+    // Create token
+    const token = jwt.sign({userId: user.id}, CONFIG.APP_SECRET);
+
+    // Set the token as cookie
+    context.response.cookie('token', token, {
+      httpOnly: true,
+      maxAge: 1000 * 60 * 60 * 24 * 100, // 100 days
+    });
+
+    return user;
+  },
+
 };
 
 module.exports = Mutation;

@@ -3,9 +3,12 @@
 type Mutation {
     createBook(title: String, description: String, thumbnail: String, image: String): Book
     deleteBook(id: ID!): Book
+    createUserAccount(name: String!, email: String!, password: String!): User!
+    login(email: String!, password: String!): User!
 }
 
 type Query {
     books: [Book]!
     book(where: BookWhereUniqueInput!): Book
+    currentUser: User
 }
