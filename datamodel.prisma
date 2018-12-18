@@ -4,7 +4,7 @@ type User {
   email: String! @unique
   password: String!
   createdAt: DateTime!
-  modifiedAt: DateTime!
+  modifiedAt: DateTime
 }
 
 type Book {
@@ -15,6 +15,7 @@ type Book {
     thumbnail: String
     createdAt: DateTime!
     updatedAt: DateTime!
+    categories: [Category!]!
 }
 
 type Category {
